@@ -1,0 +1,76 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>FORM'ARMOR</title>
+		{# Bloc que l'on pourra éventuellement modifié dans les templates finaux #}
+		{% block styles %}
+			<link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}" type="text/css" />
+			<script src="{{ asset('js/jquery.js') }}"></script>
+			<script src="{{ asset('js/bootstrap.js') }}"></script>
+			<style>
+				.carousel-inner > .item > img,
+				.carousel-inner > .item > a > img
+				{
+					width: 70%;
+					margin: auto;
+				}
+			</style>
+		{% endblock %}
+	</head>
+	
+	{% block body %}
+		{# Ici on va définir une banniere et un menu commun à toutes les pages du Bunble FormArmor #}
+			<div class="row">
+				<div class="col-md-12"> 
+					<img src="{{ asset('images/banniere.jpg') }}" class="img-responsive" />
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<nav class="navbar navbar-inverse">
+					  <div class="container-fluid">
+						<div class="navbar-header">
+						  <a class="navbar-brand" href="#">FormArmor</a>
+						</div>
+						<ul class="nav navbar-nav">
+						  <li id='menu1'><a href="{{ path('accueil') }}">Accueil</a></li>
+						  <li id='menu2'><a href="{{ path('formation') }}">Formations</a></li>
+						  <li id='menu4'><a href="{{ path('admin') }}">Administration</a></li>
+						</ul>
+					  </div>
+					</nav>
+				</div>
+			</div>
+			<div class="row">
+				
+				<div class="col-md-1">
+				</div>
+				<div class="col-md-8">
+					{# Ici se trouve le bloc que les vues du bundle pourront remplir #}
+					{% block FormArmor_body %}
+						
+					{% endblock %}
+				</div>
+				<div class="col-md-3">
+					  <h4>FormArmor c'est :</h4>
+					  <div class="list-group">
+						<a href="#" class="list-group-item">
+						  <h4 class="list-group-item-heading">Des personnes à votre service</h4>
+						  <p class="list-group-item-text">4 conseillers en formation continue</p>
+						</a>
+						<a href="#" class="list-group-item">
+						  <h4 class="list-group-item-heading">Une implantation sur tout le territoire</h4>
+						  <p class="list-group-item-text">25 établissements adhérents</p>
+						</a>
+						<a href="#" class="list-group-item">
+						  <h4 class="list-group-item-heading">Un savoir faire incomparable</h4>
+						  <p class="list-group-item-text">2000 stagiaires formés chaque année</p>
+						</a>
+					  </div>
+						<img src="{{ asset('images/carte_Formarmor.jpg') }}" class="img-responsive" />
+				</div>
+			</div>
+			
+		
+		
+	{% endblock %}

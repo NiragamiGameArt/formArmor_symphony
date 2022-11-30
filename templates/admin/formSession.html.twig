@@ -1,0 +1,68 @@
+{% extends 'admin_layout.html.twig' %}
+{% block FormArmor_body %}
+	<h3>Formulaire de {{ action }} de la session de formation</h3>
+
+	<div class="well">
+	  {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+
+	  {# Les erreurs générales du formulaire. #}
+	  {{ form_errors(form) }}
+
+	  {# Génération du contrôle de façon détaillée pour l'exemple #}
+		  {# Génération du label. #}
+		  {{ form_label(form.formation, "Formation : ", {'label_attr': {'class': 'form-label'}}) }}
+		  {# Affichage des erreurs pour ce champ précis. #}
+		  {{ form_errors(form.formation) }}
+		  {# Génération de l'input. #}
+		  {{ form_widget(form.formation, {'attr': {'class': 'form-control'}}) }}
+	  {# Génération du contrôle de façon détaillée pour l'exemple #}
+		  {# Génération du label. #}
+		  {{ form_label(form.dateDebut, "Date debut : ", {'label_attr': {'class': 'form-label'}}) }}
+		  {# Affichage des erreurs pour ce champ précis. #}
+		  {{ form_errors(form.dateDebut) }}
+		  {# Génération de l'input. #}
+		  {{ form_widget(form.dateDebut, {'attr': {'class': 'form-control'}}) }}
+	  {# Génération du contrôle de façon détaillée pour l'exemple #}
+		  {# Génération du label. #}
+		  {{ form_label(form.nbPlaces, "Nombre de places : ", {'label_attr': {'class': 'form-label'}}) }}
+		  {# Affichage des erreurs pour ce champ précis. #}
+		  {{ form_errors(form.nbPlaces) }}
+		  {# Génération de l'input. #}
+		  {{ form_widget(form.nbPlaces, {'attr': {'class': 'form-control'}}) }}
+	  {# Génération du contrôle de façon détaillée pour l'exemple #}
+		  {# Génération du label. #}
+		  {{ form_label(form.nbInscrits, "Nombre d'inscrits : ", {'label_attr': {'class': 'form-label'}}) }}
+		  {# Affichage des erreurs pour ce champ précis. #}
+		  {{ form_errors(form.nbInscrits) }}
+		  {# Génération de l'input. #}
+		  {{ form_widget(form.nbInscrits, {'attr': {'class': 'form-control'}}) }}
+	  {# Génération du contrôle de façon détaillée pour l'exemple #}
+		  {# Génération du label. #}
+		  {{ form_label(form.close, "Close : ", {'label_attr': {'class': 'form-label'}}) }}
+		  {# Affichage des erreurs pour ce champ précis. #}
+		  {{ form_errors(form.close) }}
+		  {# Génération de l'input. #}
+		  {{ form_widget(form.close, {'attr': {'class': 'form-control'}}) }}
+	  <br/>
+	  {# Pour le bouton, pas de label ni d'erreur, on affiche juste le widget #}
+	  {{ form_widget(form.Valider, {'attr': {'class': 'btn btn-danger'}}) }}
+	  
+	  {# Bouton permettant de revenir à la page précédente sans valider #}
+	  <input type="button" value="Retour" class = "btn btn-primary" onClick="history.go(-1)" />
+
+	  {# Génération automatique des champs pas encore écrits.
+		 Dans cet exemple, ce serait le champ CSRF (géré automatiquement par Symfony !)
+		 et tous les champs cachés (type hidden). #}
+	  {{ form_rest(form) }}
+
+	  {# Fermeture de la balise <form> du formulaire HTML #}
+	  {{ form_end(form) }}
+	</div>
+	
+	<script>
+		$(function() {
+			$('#menu4').attr('class', 'active');
+		});
+	</script>
+	
+{% endblock %}
