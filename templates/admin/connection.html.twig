@@ -1,0 +1,51 @@
+{% extends 'layout.html.twig' %}
+{% block FormArmor_body %}
+	<h3>Formulaire d'authentification</h3>
+
+
+	<div class="well">
+	  {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+
+	  {# Les erreurs générales du formulaire. #}
+	  {{ form_errors(form) }}
+
+	  {# Génération du contrôle de facon detaillée pour l'exemple #}
+		  {# Génération du label. #}
+		  {{ form_label(form.nom, "Nom : ", {'label_attr': {'class': 'form-label'}}) }}
+		  {# Affichage des erreurs pour ce champ précis. #}
+		  {{ form_errors(form.nom) }}
+		  {# Génération de l'input. #}
+		  {{ form_widget(form.nom, {'attr': {'class': 'form-control'}}) }}
+	  
+	  {# Génération du controle de façon detaillée pour l'exemple #}
+		  {# Génération du label. #}
+		  {{ form_label(form.password, "Mot de passe : ", {'label_attr': {'class': 'form-label'}}) }}
+		  {# Affichage des erreurs pour ce champ précis. #}
+		  {{ form_errors(form.password) }}
+		  {# Génération de l'input. #}
+		  {{ form_widget(form.password, {'attr': {'class': 'form-control'}}) }}
+	  <br/>
+	  {# Pour le bouton, pas de label ni d'erreur, on affiche juste le widget #}
+	  {{ form_widget(form.Envoyer, {'attr': {'class': 'btn btn-primary'}}) }}
+
+	  {# Génération automatique des champs pas encore écrits.
+		 Dans cet exemple, ce serait le champ CSRF (géré automatiquement par Symfony !)
+		 et tous les champs cachés (type hidden). #}
+	  {{ form_rest(form) }}
+
+	  {# Fermeture de la balise <form> du formulaire HTML #}
+	  {{ form_end(form) }}
+	</div>
+	{# Affichage des messages éventuels. Par exemple après une insertion via un formulaire #}
+	{% for flash_message in app.session.flashBag.get('connection') %}
+		<div class="flash-notice">
+			<script>alert('{{ flash_message }}');</script>
+		</div>
+	{% endfor %}
+	<script>
+		$(function() {
+			$('#menu3').attr('class', 'active');
+		});
+	</script>
+	
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends "admin_layout.html.twig" %}
+{% block FormArmor_body %}
+	<h3>Formulaire de {{ action }} du statut</h3>
+
+	<div class="well">
+	  {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+
+	  {# Les erreurs g�n�rales du formulaire. #}
+	  {{ form_errors(form) }}
+
+	  {# Génération du contrôle de facon detaillee pour l'exemple #}
+		  {# Generation du label. #}
+		  {{ form_label(form.type, "Type : ", {'label_attr': {'class': 'form-label'}}) }}
+		  {# Affichage des erreurs pour ce champ precis. #}
+		  {{ form_errors(form.type) }}
+		  {# Generation de l'input. #}
+		  {{ form_widget(form.type, {'attr': {'class': 'form-control'}}) }}
+	  
+	  {# Generation du contrôle de facon detaillee pour l'exemple #}
+		  {# Generation du label. #}
+		  {{ form_label(form.tauxHoraire, "Taux horaire : ", {'label_attr': {'class': 'form-label'}}) }}
+		  {# Affichage des erreurs pour ce champ precis. #}
+		  {{ form_errors(form.tauxHoraire) }}
+		  {# Generation de l'input. #}
+		  {{ form_widget(form.tauxHoraire, {'attr': {'class': 'form-control'}}) }}
+	  <br/>
+	  {# Pour le bouton, pas de label ni d'erreur, on affiche juste le widget #}
+	  {{ form_widget(form.Valider, {'attr': {'class': 'btn btn-danger'}}) }}
+	  
+	  {# Bouton permettant de revenir a la page precedente sans valider #}
+	  <input type="button" value="Retour" class = "btn btn-primary" onClick="history.go(-1)" />
+
+	  {# Generation automatique des champs pas encore ecrits.
+		 Dans cet exemple, ce serait le champ CSRF (gere automatiquement par Symfony !)
+		 et tous les champs caches (type hidden). #}
+	  {{ form_rest(form) }}
+
+	  {# Fermeture de la balise <form> du formulaire HTML #}
+	  {{ form_end(form) }}
+	</div>
+	<script>
+		$(function() {
+			$('#menu1').attr('class', 'active');
+		});
+	</script>
+	
+{% endblock %}

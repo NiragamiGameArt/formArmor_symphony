@@ -1,0 +1,40 @@
+{% extends 'admin_layout.html.twig' %}
+{% block FormArmor_body %}
+	<h2>AFFICHAGE DES PLANS DE FORMATION</h2>
+	<table class="table">
+		<thead>
+		<tr>
+			<th>Id</th>
+			<th>Client</th>
+			<th>Formation</th>
+			<th>Effectué</th>
+			<th colspan="2">Option</th>
+		</tr>
+		</thead>
+		<tbody>
+			{% for plan in lesPlans %}
+				<tr {# si le nombre de passages dans la boucle est pair #} {% if loop.index is even %} class="success" {% else %} class="info" {% endif %}>
+					<td>{{plan.id}}</td>
+					<td>{{plan.client.nom}}</td>
+					<td>{{plan.formation.libelle}}-{{plan.formation.niveau}}</td>
+					{% if (plan.effectue == 1) %}
+						<td>Oui</td>
+					{% else %}
+						<td>Non</td>
+					{% endif %}
+					<td><a href="{{ path('adminPlanModif', {'id': plan.id}) }}">Modifier</a></td>
+					<td><a href="{{ path('adminPlanSupp', {'id': plan.id}) }}">Supprimer</a></td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	
+	{{ knp_pagination_render(lesPlans) }}
+	
+	<script>
+		$(function() {
+			$('#menu5').attr('class', 'active');
+		});
+	</script>
+	
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends 'admin_layout.html.twig' %}
+{% block FormArmor_body %}
+	<h3>Formulaire de {{ action }} du plan de formation</h3>
+
+	<div class="well">
+	  {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+
+	  {# Les erreurs générales du formulaire. #}
+	  {{ form_errors(form) }}
+
+	  {# Génération du controle de facon détaillée pour l'exemple #}
+		  {# Génération du label. #}
+		  {{ form_label(form.client, "Client : ", {'label_attr': {'class': 'form-label'}}) }}
+		  {# Affichage des erreurs pour ce champ précis. #}
+		  {{ form_errors(form.client) }}
+		  {# Génération de l'input. #}
+		  {{ form_widget(form.client, {'attr': {'class': 'form-control'}}) }}
+	  {# Génération du contrôle de facon detaillée pour l'exemple #}
+		  {# Génération du label. #}
+		  {{ form_label(form.formation, "Formation : ", {'label_attr': {'class': 'form-label'}}) }}
+		  {# Affichage des erreurs pour ce champ précis. #}
+		  {{ form_errors(form.formation) }}
+		  {# Génération de l'input. #}
+		  {{ form_widget(form.formation, {'attr': {'class': 'form-control'}}) }}
+	  {# Génération du controle de facon detaillée pour l'exemple #}
+		  {# Génération du label. #}
+		  {{ form_label(form.effectue, "Effectué : ", {'label_attr': {'class': 'form-label'}}) }}
+		  {# Affichage des erreurs pour ce champ précis. #}
+		  {{ form_errors(form.effectue) }}
+		  {# G�n�ration de l'input. #}
+		  {{ form_widget(form.effectue, {'attr': {'class': 'form-control'}}) }}
+	  <br/>
+	  {# Pour le bouton, pas de label ni d'erreur, on affiche juste le widget #}
+	  {{ form_widget(form.Valider, {'attr': {'class': 'btn btn-danger'}}) }}
+	  
+	  {# Bouton permettant de revenir à la page précédente sans valider #}
+	  <input type="button" value="Retour" class = "btn btn-primary" onClick="history.go(-1)" />
+
+	  {# Génération automatique des champs pas encore écrits.
+		 Dans cet exemple, ce serait le champ CSRF (géré automatiquement par Symfony !)
+		 et tous les champs cachés (type hidden). #}
+	  {{ form_rest(form) }}
+
+	  {# Fermeture de la balise <form> du formulaire HTML #}
+	  {{ form_end(form) }}
+	</div>
+	<script>
+		$(function() {
+			$('#menu5').attr('class', 'active');
+		});
+	</script>
+	
+{% endblock %}
