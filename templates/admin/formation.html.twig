@@ -1,0 +1,46 @@
+{% extends 'admin_layout.html.twig' %}
+{% block FormArmor_body %}
+	<h2>AFFICHAGE DES FORMATIONS</h2>
+	<table class="table">
+		<thead>
+		<tr>
+			<th>Id</th>
+			<th>Libelle</th>
+			<th>Niveau</th>
+			<th>Type</th>
+			<th>Diplomante</th>
+			<th>Dur&eacute;e</th>
+			<th>Cout de revient</th>
+			<th colspan="2">Option</th>
+		</tr>
+		</thead>
+		<tbody>
+			{% for formation in lesFormations %}
+				<tr {# si le nombre de passages dans la boucle est pair #} {% if loop.index is even %} class="success" {% else %} class="info" {% endif %}>
+					<td>{{formation.id}}</td>
+					<td>{{formation.libelle}}</td>
+					<td>{{formation.niveau}}</td>
+					<td>{{formation.typeForm}}</td>
+					{% if (formation.diplomante == 1) %}
+						<td>Oui</td>
+					{% else %}
+						<td>Non</td>
+					{% endif %}
+					<td>{{formation.duree}}</td>
+					<td>{{formation.coutrevient}}</td>
+					<td><a href="{{ path('adminFormationModif', {'id': formation.id}) }}">Modifier</a></td>
+					<td><a href="{{ path('adminFormationSupp', {'id': formation.id}) }}">Supprimer</a></td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	
+	{{ knp_pagination_render(lesFormations) }}
+	
+	<script>
+		$(function() {
+			$('#menu3').attr('class', 'active');
+		});
+	</script>
+	
+{% endblock %}

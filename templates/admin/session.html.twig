@@ -1,0 +1,44 @@
+{% extends 'admin_layout.html.twig' %}
+{% block FormArmor_body %}
+	<h2>AFFICHAGE DES SESSIONS DE FORMATION</h2>
+	<table class="table">
+		<thead>
+		<tr>
+			<th>Id</th>
+			<th>Formation</th>
+			<th>Date debut</th>
+			<th>Nombre de places</th>
+			<th>Nombre d'inscrits</th>
+			<th>Close</th>
+			<th colspan="2">Option</th>
+		</tr>
+		</thead>
+		<tbody>
+			{% for session in lesSessions %}
+				<tr {# si le nombre de passages dans la boucle est pair #} {% if loop.index is even %} class="success" {% else %} class="info" {% endif %}>
+					<td>{{session.id}}</td>
+					<td>{{session.formation.libelle}}-{{session.formation.niveau}}</td>
+					<td>{{session.dateDebut|date('Y-m-d')}}</td>
+					<td>{{session.nbPlaces}}</td>
+					<td>{{session.nbInscrits}}</td>
+					{% if (session.close == 1) %}
+						<td>Oui</td>
+					{% else %}
+						<td>Non</td>
+					{% endif %}
+					<td><a href="{{ path('adminSessionModif', {'id': session.id}) }}">Modifier</a></td>
+					<td><a href="{{ path('adminSessionSupp', {'id': session.id}) }}">Supprimer</a></td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	
+	{{ knp_pagination_render(lesSessions) }}
+	
+	<script>
+		$(function() {
+			$('#menu4').attr('class', 'active');
+		});
+	</script>
+	
+{% endblock %}
