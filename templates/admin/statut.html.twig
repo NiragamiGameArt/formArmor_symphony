@@ -1,0 +1,34 @@
+{% extends 'admin_layout.html.twig' %}
+{% block FormArmor_body %}
+	<h2>AFFICHAGE DES STATUTS</h2>
+	<table class="table">
+		<thead>
+		<tr>
+			<th>Identifiant</th>
+			<th>Type</th>
+			<th>Taux Horaire</th>
+			<th>Option</th>
+		</tr>
+		</thead>
+		<tbody>
+			{% for statut in lesStatuts %}
+				<tr {# si le nombre de passages dans la boucle est pair #} {% if loop.index is even %} class="success" {% else %} class="info" {% endif %}>
+					<td>{{statut.id}}</td>
+					<td>{{statut.type}}</td>
+					<td>{{statut.tauxHoraire}}</td>
+					<td><a href="{{ path('adminStatutModif', {'id': statut.id}) }}">Modifier</a></td>
+					<td><a href="{{ path('adminStatutSupp', {'id': statut.id}) }}">Supprimer</a></td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	
+	{{ knp_pagination_render(lesStatuts) }}
+	
+	<script>
+		$(function() {
+			$('#menu1').attr('class', 'active');
+		});
+	</script>
+	
+{% endblock %}

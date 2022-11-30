@@ -1,0 +1,88 @@
+{% extends 'admin_layout.html.twig' %}
+{% block FormArmor_body %}
+	<h3>Formulaire de {{ action }} du client</h3>
+
+	<div class="well">
+	  {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+
+	  {# Les erreurs générales du formulaire. #}
+	  {{ form_errors(form) }}
+
+	  {# Génération du controle de façon détaillée pour l'exemple #}
+		  {# Génération du label. #}
+		  {{ form_label(form.statut, "Statut : ", {'label_attr': {'class': 'form-label'}}) }}
+		  {# Affichage des erreurs pour ce champ précis. #}
+		  {{ form_errors(form.statut) }}
+		  {# Génération de l'input. #}
+		  {{ form_widget(form.statut, {'attr': {'class': 'form-control'}}) }}
+	  {# Génération du contrôle de façon détaillée pour l'exemple #}
+		  {# Génération du label. #}
+		  {{ form_label(form.nom, "Nom : ", {'label_attr': {'class': 'form-label'}}) }}
+		  {# Affichage des erreurs pour ce champ précis. #}
+		  {{ form_errors(form.nom) }}
+		  {# Génération de l'input. #}
+		  {{ form_widget(form.nom, {'attr': {'class': 'form-control'}}) }}
+	  {# Génération du controle de façon détaillée pour l'exemple #}
+		  {# Génération du label. #}
+		  {{ form_label(form.adresse, "Adresse : ", {'label_attr': {'class': 'form-label'}}) }}
+		  {# Affichage des erreurs pour ce champ précis. #}
+		  {{ form_errors(form.adresse) }}
+		  {# Génération de l'input. #}
+		  {{ form_widget(form.adresse, {'attr': {'class': 'form-control'}}) }}
+	  {# Génération du controle de façon détaillée pour l'exemple #}
+		  {# Génération du label. #}
+		  {{ form_label(form.cp, "Code postal : ", {'label_attr': {'class': 'form-label'}}) }}
+		  {# Affichage des erreurs pour ce champ précis. #}
+		  {{ form_errors(form.cp) }}
+		  {# Génération de l'input. #}
+		  {{ form_widget(form.cp, {'attr': {'class': 'form-control'}}) }}
+	  {# Génération du controle de façon détaillée pour l'exemple #}
+		  {# Génération du label. #}
+		  {{ form_label(form.ville, "Ville : ", {'label_attr': {'class': 'form-label'}}) }}
+		  {# Affichage des erreurs pour ce champ précis. #}
+		  {{ form_errors(form.ville) }}
+		  {# Génération de l'input. #}
+		  {{ form_widget(form.ville, {'attr': {'class': 'form-control'}}) }}
+	  {# Génération du controle de façon détaillée pour l'exemple #}
+		  {# Génération du label. #}
+		  {{ form_label(form.email, "E Mail : ", {'label_attr': {'class': 'form-label'}}) }}
+		  {# Affichage des erreurs pour ce champ précis. #}
+		  {{ form_errors(form.email) }}
+		  {# Génération de l'input. #}
+		  {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+	  {# Génération du controle de façon détaillée pour l'exemple #}
+		  {# Génération du label. #}
+		  {{ form_label(form.nbhcpta, "Nombre d'heures compta : ", {'label_attr': {'class': 'form-label'}}) }}
+		  {# Affichage des erreurs pour ce champ précis. #}
+		  {{ form_errors(form.nbhcpta) }}
+		  {# Génération de l'input. #}
+		  {{ form_widget(form.nbhcpta, {'attr': {'class': 'form-control'}}) }}
+	  {# Génération du controle de façon détaillée pour l'exemple #}
+		  {# Génération du label. #}
+		  {{ form_label(form.nbhbur, "Nombre d'heures bureautique : ", {'label_attr': {'class': 'form-label'}}) }}
+		  {# Affichage des erreurs pour ce champ précis. #}
+		  {{ form_errors(form.nbhbur) }}
+		  {# Génération de l'input. #}
+		  {{ form_widget(form.nbhbur, {'attr': {'class': 'form-control'}}) }}
+	  <br/>
+	  {# Pour le bouton, pas de label ni d'erreur, on affiche juste le widget #}
+	  {{ form_widget(form.Valider, {'attr': {'class': 'btn btn-danger'}}) }}
+	  
+	  {# Bouton permettant de revenir à la page précédente sans valider #}
+	  <input type="button" value="Retour" class = "btn btn-primary" onClick="history.go(-1)" />
+
+	  {# Génération automatique des champs pas encore écrits.
+		 Dans cet exemple, ce serait le champ CSRF (géré automatiquement par Symfony !)
+		 et tous les champs cachés (type hidden ). #}
+	  {{ form_rest(form) }}
+
+	  {# Fermeture de la balise <form> du formulaire HTML #}
+	  {{ form_end(form) }}
+	</div>
+	<script>
+		$(function() {
+			$('#menu1').attr('class', 'active');
+		});
+	</script>
+	
+{% endblock %}

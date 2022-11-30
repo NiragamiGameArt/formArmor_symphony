@@ -1,0 +1,44 @@
+{% extends 'admin_layout.html.twig' %}
+{% block FormArmor_body %}
+	<h2>AFFICHAGE DES CLIENTS</h2>
+	<table class="table">
+		<thead>
+		<tr>
+			<th>Id</th>
+			<th>Statut</th>
+			<th>Nom</th>
+			<th>Adresse</th>
+			<th>Code postal</th>
+			<th>Ville</th>
+			<th>Compta</th>
+			<th>Bureautique</th>
+			<th colspan ="2">Option</th>
+		</tr>
+		</thead>
+		<tbody>
+			{% for client in lesClients %}
+				<tr {# si le nombre de passages dans la boucle est pair #} {% if loop.index is even %} class="success" {% else %} class="info" {% endif %}>
+					<td>{{client.id}}</td>
+					<td>{{client.statut.type}}</td>
+					<td>{{client.nom}}</td>
+					<td>{{client.adresse}}</td>
+					<td>{{client.cp}}</td>
+					<td>{{client.ville}}</td>
+					<td>{{client.nbhcpta}}</td>
+					<td>{{client.nbhbur}}</td>
+					<td><a href="{{ path('adminClientModif', {'id': client.id}) }}">Modifier</a></td>
+					<td><a href="{{ path('adminClientSupp', {'id': client.id}) }}">Supprimer</a></td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	
+	{{ knp_pagination_render(lesClients) }}
+	
+	<script>
+		$(function() {
+			$('#menu2').attr('class', 'active');
+		});
+	</script>
+	
+{% endblock %}
